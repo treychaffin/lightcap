@@ -12,10 +12,10 @@
 /* [Light Cap] */
 
 // Light Diameter [in]
-ld = 1.25;
+ld = 1.3625;
 
 // Elastic Cord Hole Diameter [in]
-echd = 0.125;
+echd = 0.13;
 
 // Padding Thickness [in]
 pt = 0.0625;
@@ -41,7 +41,7 @@ tpw = 0.75;
 tpf = 0.0625;
 
 // Thumb Pad Length [in]
-tpl = 0.8125;
+tpl = 0.875;
 
 // CONVERT TO MM
 ld_mm = ld*25.4;
