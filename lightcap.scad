@@ -26,6 +26,9 @@ ct = 0.125;
 // Light Emboss Depth [in]
 led = 0.0625;
 
+// Light Emboss Draft Angle [deg]
+da = 10;
+
 /* [Thumb Pad] */
 
 // Thumb Pad [true/false]
@@ -38,8 +41,7 @@ tpw = 0.75;
 tpf = 0.0625;
 
 // Thumb Pad Length [in]
-tpl = 0.875;
-
+tpl = 0.8125;
 
 // CONVERT TO MM
 ld_mm = ld*25.4;
@@ -93,7 +95,7 @@ difference() {
     }
     translate([0,0,ct_mm+1]) {
         rotate([180,0,0]) {
-            cylinder(d1=ld_mm+0.2, d2=ld_mm, h=led_mm+1);
+            cylinder(d1=(ct_mm+1)*tan(da)+ld_mm, d2=ld_mm, h=led_mm+1);
         }
     }
 }
