@@ -27,7 +27,7 @@ ct = 0.125;
 led = 0.0625;
 
 // Light Emboss Draft Angle [deg]
-da = 90; //[0:90]
+da = 10; //[0:90]
 
 /* [Thumb Pad] */
 
