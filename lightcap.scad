@@ -95,7 +95,7 @@ difference() {
     }
     translate([0,0,ct_mm+1]) {
         rotate([180,0,0]) {
-            cylinder(d1=(ct_mm+1)*tan(da)+ld_mm, d2=ld_mm, h=led_mm+1);
+            cylinder(d1=2*(ct_mm+1)*tan(da)+ld_mm, d2=ld_mm, h=led_mm+1);
         }
     }
 }
