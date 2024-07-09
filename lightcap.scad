@@ -56,47 +56,46 @@ $fn=256; // Set the resolution of the circles
 
 difference() {
     linear_extrude(ct_mm){
-        difference() {
             union() {
-                minkowski() {
-                    hull(){
-                        circle(d=ld_mm);
-                        translate([(ld_mm)*0.5+echd_mm,0,0]) {
-                            circle(d=echd_mm);
-                        }
-                        translate([-(ld_mm)*0.5-echd_mm,0,0]) {
-                            circle(d=echd_mm);
-                        }
+            minkowski() {
+                hull(){
+                    circle(d=ld_mm);
+                    translate([(ld_mm)*0.5+echd_mm,0,0]) {
+                        circle(d=echd_mm);
                     }
-                    circle(d=pt_mm*2);
-                }
-                if(tp) {
-                    hull(){
-                        translate([-0.5*tpw_mm,tpl_mm,0]){
-                            circle(r=tpf_mm);
-                            translate([tpw_mm,0,0]) circle(r=tpf_mm);
-                        }
-                        translate([(ld_mm)*0.5+echd_mm,0,0]) {
-                            circle(d=echd_mm+pt_mm*2);
-                        }
-                        translate([-(ld_mm)*0.5-echd_mm,0,0]) {
-                            circle(d=echd_mm+pt_mm*2);
-                        }
+                    translate([-(ld_mm)*0.5-echd_mm,0,0]) {
+                        circle(d=echd_mm);
                     }
                 }
+                circle(d=pt_mm*2);
             }
-            translate([(ld_mm)*0.5+echd_mm,0,0]) {
-                circle(d=echd_mm);
-            }
-            translate([-(ld_mm)*0.5-echd_mm,0,0]) {
-                circle(d=echd_mm);
+            if(tp) {
+                hull(){
+                    translate([-0.5*tpw_mm,tpl_mm,0]){
+                        circle(r=tpf_mm);
+                        translate([tpw_mm,0,0]) circle(r=tpf_mm);
+                    }
+                    translate([(ld_mm)*0.5+echd_mm,0,0]) {
+                        circle(d=echd_mm+pt_mm*2);
+                    }
+                    translate([-(ld_mm)*0.5-echd_mm,0,0]) {
+                        circle(d=echd_mm+pt_mm*2);
+                    }
+                }
             }
         }
     }
-
-    translate([0,0,ct_mm]) {
+    translate([(ld_mm)*0.5+echd_mm,0,-1]) {
+        cylinder(d=echd_mm, h=ct_mm+2);
+    }
+    translate([-(ld_mm)*0.5-echd_mm,0,-1]) {
+        cylinder(d=echd_mm, h=ct_mm+2);
+    }
+    translate([0,0,ct_mm+1]) {
         rotate([180,0,0]) {
-            #cylinder(d1=ld_mm+0.2, d2=ld_mm, h=led_mm);
+            cylinder(d1=ld_mm+0.2, d2=ld_mm, h=led_mm+1);
         }
     }
 }
+
+            
