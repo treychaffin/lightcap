@@ -13,7 +13,7 @@ Cap for a [Streamlight Protac](https://www.streamlight.com/products/detail/prota
 
 ## Instructions
 
-Use the customizer on thingiverse design to generate an .stl, then print.
+Use the customizer on [thingiverse design](https://www.thingiverse.com/thing:6692966) to generate an .stl, then print.
 
 Alternatively, you can modify the parameters in the openSCAD file, generate an .stl file, then print. 
 
