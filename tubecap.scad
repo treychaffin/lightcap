@@ -18,7 +18,7 @@ ld = 1.3625;
 echd = 0.13;
 
 // Padding Thickness [in]
-pt = 0.0625;
+pt = 0.125;
 
 // Cap Thickness [in]
 ct = 0.125;
@@ -27,7 +27,7 @@ ct = 0.125;
 led = 0.0625;
 
 // Light Emboss Draft Angle [deg]
-da = 10; //[0:90]
+da = 15; //[0:90]
 
 /* [Thumb Pad] */
 
@@ -41,7 +41,7 @@ tpw = 0.75;
 tpf = 0.0625;
 
 // Thumb Pad Length [in]
-tpl = 0.875;
+tpl = 0.25;
 
 // CONVERT TO MM
 ld_mm = ld*25.4;
@@ -62,35 +62,35 @@ difference() {
             minkowski() {
                 hull(){
                     circle(d=ld_mm);
-                    translate([(ld_mm)*0.5+echd_mm,0,0]) {
+                    translate([(ld_mm+pt_mm+echd_mm)*0.5,0,0]) {
                         circle(d=echd_mm);
                     }
-                    translate([-(ld_mm)*0.5-echd_mm,0,0]) {
+                    translate([-(ld_mm+pt_mm+echd_mm)*0.5,0,0]) {
                         circle(d=echd_mm);
                     }
                 }
-                circle(d=pt_mm*2);
+                circle(d=pt_mm);
             }
             if(tp) {
                 hull(){
-                    translate([-0.5*tpw_mm,tpl_mm,0]){
+                    translate([-0.5*tpw_mm,ld_mm*0.5+tpl_mm,0]){
                         circle(r=tpf_mm);
                         translate([tpw_mm,0,0]) circle(r=tpf_mm);
                     }
-                    translate([(ld_mm)*0.5+echd_mm,0,0]) {
-                        circle(d=echd_mm+pt_mm*2);
+                    translate([(ld_mm+pt_mm+echd_mm)*0.5,0,0]) {
+                        circle(d=echd_mm+pt_mm);
                     }
-                    translate([-(ld_mm)*0.5-echd_mm,0,0]) {
-                        circle(d=echd_mm+pt_mm*2);
+                    translate([-(ld_mm+pt_mm+echd_mm)*0.5,0,0]) {
+                        circle(d=echd_mm+pt_mm);
                     }
                 }
             }
         }
     }
-    translate([(ld_mm)*0.5+echd_mm,0,-1]) {
+    translate([(ld_mm+pt_mm+echd_mm)*0.5,0,-1]) {
         cylinder(d=echd_mm, h=ct_mm+2);
     }
-    translate([-(ld_mm)*0.5-echd_mm,0,-1]) {
+    translate([-(ld_mm+pt_mm+echd_mm)*0.5,0,-1]) {
         cylinder(d=echd_mm, h=ct_mm+2);
     }
     translate([0,0,ct_mm+1]) {
